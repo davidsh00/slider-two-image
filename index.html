@@ -45,7 +45,9 @@
       const sliderIcon = document.querySelector(".slider-icon");
       const slider = document.querySelector(".slider");
       const imgFront = document.querySelector(".img2");
+      const sliderImages = document.querySelectorAll(".slider-wrapper img");
       let ismousedown = false;
+
       sliderIcon.addEventListener("mousedown", (e) => {
         ismousedown = true;
       });
@@ -61,21 +63,23 @@
       sliderIcon.addEventListener("touchend", (e) => {
         ismousedown = false;
       });
-      slider.addEventListener("mousemove",move);
-      slider.addEventListener("touchmove",move);
-      function move(e){
+      slider.addEventListener("mousemove", move);
+      slider.addEventListener("touchmove", move);
+      window.addEventListener("resize", () => setimg());
+
+      function move(e) {
         if (ismousedown) {
-          if(!e.x){e.x=e.changedTouches[0].pageX}
+          if (!e.x) {
+            e.x = e.changedTouches[0].pageX;
+          }
           let currsorx = e.x - sliderWrapper.getBoundingClientRect().x;
-          if(currsorx<0|| currsorx>sliderWrapper.offsetWidth){return}
+          if (currsorx < 0 || currsorx > sliderWrapper.offsetWidth) {
+            return;
+          }
           slider.style.left = currsorx;
           imgFront.style.width = currsorx;
         }
       }
-
-      const sliderImages = document.querySelectorAll(".slider-wrapper img");
-
-      window.addEventListener("resize", () => setimg());
       setimg();
       function setimg() {
         sliderImages.forEach((elem) => {
