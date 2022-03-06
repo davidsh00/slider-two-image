@@ -49,19 +49,29 @@
       sliderIcon.addEventListener("mousedown", (e) => {
         ismousedown = true;
       });
+      sliderIcon.addEventListener("touchstart", (e) => {
+        ismousedown = true;
+      });
       sliderIcon.addEventListener("mouseout", () => {
         ismousedown = false;
       });
       sliderIcon.addEventListener("mouseup", (e) => {
         ismousedown = false;
       });
-      slider.addEventListener("mousemove", (e) => {
+      sliderIcon.addEventListener("touchend", (e) => {
+        ismousedown = false;
+      });
+      slider.addEventListener("mousemove",move);
+      slider.addEventListener("touchmove",move);
+      function move(e){
         if (ismousedown) {
+          if(!e.x){e.x=e.changedTouches[0].pageX}
           let currsorx = e.x - sliderWrapper.getBoundingClientRect().x;
+          if(currsorx<0|| currsorx>sliderWrapper.offsetWidth){return}
           slider.style.left = currsorx;
           imgFront.style.width = currsorx;
         }
-      });
+      }
 
       const sliderImages = document.querySelectorAll(".slider-wrapper img");
 
