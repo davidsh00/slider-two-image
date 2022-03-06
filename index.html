@@ -54,16 +54,17 @@
       sliderIcon.addEventListener("touchstart", (e) => {
         ismousedown = true;
       });
-      sliderIcon.addEventListener("mouseout", () => {
+      sliderWrapper.addEventListener("mouseup", () => {
         ismousedown = false;
       });
+     
       sliderIcon.addEventListener("mouseup", (e) => {
         ismousedown = false;
       });
       sliderIcon.addEventListener("touchend", (e) => {
         ismousedown = false;
       });
-      slider.addEventListener("mousemove", move);
+      sliderWrapper.addEventListener("mousemove", move);
       slider.addEventListener("touchmove", move);
       window.addEventListener("resize", () => setimg());
 
