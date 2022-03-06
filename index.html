@@ -1,0 +1,78 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Slide To see deffrent</h1>
+    <div class="slider-wrapper">
+      <div class="slider-control">
+        <button class="btn-before">Before</button>
+        <button class="btn-after">After</button>
+        <div class="slider">
+          <i class="slider-icon fa-solid fa-arrows-left-right"></i>
+        </div>
+      </div>
+      <div class="img-container">
+        <div class="img1">
+          <img
+            src="src/img/industry.jpg"
+            class="new-image"
+            alt="new_disign-image"
+          />
+        </div>
+        <div class="img2">
+          <img
+            src="src/img/industry.jpg"
+            class="old-image"
+            alt="old_dising-image"
+          />
+        </div>
+      </div>
+    </div>
+    <script>
+      const sliderWrapper = document.querySelector(".slider-control");
+      const sliderIcon = document.querySelector(".slider-icon");
+      const slider = document.querySelector(".slider");
+      const imgFront = document.querySelector(".img2");
+      let ismousedown = false;
+      sliderIcon.addEventListener("mousedown", (e) => {
+        ismousedown = true;
+      });
+      sliderIcon.addEventListener("mouseout", () => {
+        ismousedown = false;
+      });
+      sliderIcon.addEventListener("mouseup", (e) => {
+        ismousedown = false;
+      });
+      slider.addEventListener("mousemove", (e) => {
+        if (ismousedown) {
+          let currsorx = e.x - sliderWrapper.getBoundingClientRect().x;
+          slider.style.left = currsorx;
+          imgFront.style.width = currsorx;
+        }
+      });
+
+      const sliderImages = document.querySelectorAll(".slider-wrapper img");
+
+      window.addEventListener("resize", () => setimg());
+      setimg();
+      function setimg() {
+        sliderImages.forEach((elem) => {
+          elem.style.width = sliderWrapper.offsetWidth;
+          elem.style.height = sliderWrapper.offsetHeight;
+        });
+      }
+    </script>
+  </body>
+</html>
