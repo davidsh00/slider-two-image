@@ -59,7 +59,7 @@ body {
   background-color: white;
   justify-content: center;
   width: 0.25rem;
-  transition: all 0.5s, left 0;
+  transition: all 0.5s ease, left 0s ease;
 }
 .slider-wrapper .slider-control .slider .slider-icon {
   padding: 0.5rem;

@@ -46,8 +46,32 @@
       const slider = document.querySelector(".slider");
       const imgFront = document.querySelector(".img2");
       const sliderImages = document.querySelectorAll(".slider-wrapper img");
+      const btnBefore = document.querySelector(".btn-before");
+      const btnAfter = document.querySelector(".btn-after");
       let ismousedown = false;
 
+      btnBefore.addEventListener("click", () => {
+        const transformFormer = slider.style.transition;
+        slider.style.transition = "all 1s";
+        imgFront.style.transition = "all 1s";
+        slider.style.left = "100%";
+        imgFront.style.width = "100%";
+        setTimeout(() => {
+          slider.style.transition = transformFormer;
+          imgFront.style.transition = "none";
+        }, 1000);
+      });
+      btnAfter.addEventListener("click", () => {
+        const transformFormer = slider.style.transition;
+        slider.style.transition = "all 1s";
+        imgFront.style.transition = "all 1s";
+        slider.style.left = "0%";
+        imgFront.style.width = "0%";
+        setTimeout(() => {
+          slider.style.transition = transformFormer;
+          imgFront.style.transition = "none";
+        }, 1000);
+      });
       sliderIcon.addEventListener("mousedown", (e) => {
         ismousedown = true;
       });
@@ -57,7 +81,7 @@
       sliderWrapper.addEventListener("mouseup", () => {
         ismousedown = false;
       });
-     
+
       sliderIcon.addEventListener("mouseup", (e) => {
         ismousedown = false;
       });

@@ -52,7 +52,7 @@ body {
       background-color: white;
       justify-content: center;
       width: 0.25rem;
-      transition: all 0.5s,left 0;
+      transition: all 0.5s ease,left 0s ease;
       .slider-icon {
         padding: .5rem;
         color:rgba(0,0,0,.0);
